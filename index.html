@@ -1,29 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Selamat Ulang Tahun!</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="card-container">
-        <div class="card">
-            <div class="photo-placeholder">
-                <!-- Placeholder untuk foto, ganti 'src' dengan URL foto temanmu -->
-                <img src="https://via.placeholder.com/150" alt="Friend's Photo" id="friend-photo">
+
+    <section class="hero">
+        <!-- Background Image with B&W Filter -->
+        <div class="hero-bg"></div>
+
+        <div class="content-wrapper">
+            
+            <div class="circular-group">
+                <!-- Curved Text -->
+                <svg viewBox="0 0 500 500" class="curved-text-svg">
+                    <!-- Path untuk tulisan melingkar di atas foto -->
+                    <path id="text-curve" d="M 50,270 A 200,200 0 0,1 450,270" fill="transparent" />
+                    <text>
+                        <textPath href="#text-curve" startOffset="50%" text-anchor="middle">
+                            SELAMAT ULANG TAHUN
+                        </textPath>
+                    </text>
+                </svg>
+
+                <!-- Center Photo -->
+                <img src="https://via.placeholder.com/250" alt="Foto Teman" class="profile-photo">
             </div>
-            <div class="text-content">
-                <h1>Happy Birthday, <br><span id="friend-name" style="color: #ff6b6b;">[Nama Teman]</span>!</h1>
-                <p class="message">Semoga harimu dipenuhi dengan kebahagiaan dan tahun ini membawa banyak keceriaan. Semoga semua mimpimu menjadi kenyataan!</p>
-                <div class="decorations">
-                    <span class="balloon">🎈</span>
-                    <span class="cake">🎂</span>
-                    <span class="present">🎁</span>
-                </div>
-            </div>
+
+            <!-- Name -->
+            <h1 class="name-text">NAMA</h1>
         </div>
-    </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <p>Scroll ke bawah</p>
+            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+
+        <!-- Wavy Divider to next section -->
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="next-section">
+        <!-- Plain color section -->
+        <div class="message-container">
+            <h2>Pesan Spesial</h2>
+            <p>Bagian ini bisa diisi dengan ucapan manis, doa, atau kenangan bersama dengannya.</p>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>

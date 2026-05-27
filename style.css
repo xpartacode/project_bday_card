@@ -1,97 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
-
 :root {
-    --primary-color: #ff6b6b;
-    --secondary-color: #feca57;
-    --bg-color: #f7f1e3;
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --text-color: #2d3436;
+    --primary-color: #f1c40f; /* Warna gold yang mewah untuk teks melingkar */
+    --name-color: #e74c3c;    /* Warna merah elegan untuk nama */
+    --plain-bg: #2c3e50;      /* Warna solid untuk bagian bawah */
+    --text-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-    min-height: 100vh;
+    font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
+    background-color: var(--plain-bg);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--text-color);
+    background-color: #000;
 }
 
-.card-container {
-    perspective: 1000px;
-    width: 90%;
-    max-width: 400px;
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Ganti URL ini dengan foto background yang diinginkan */
+    background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    /* Filter hitam putih (grayscale) dan sedikit digelapkan agar teks terbaca */
+    filter: grayscale(100%) brightness(0.4);
+    z-index: 0;
 }
 
-.card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    padding: 40px 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
-    text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.photo-placeholder {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-}
-
-.photo-placeholder img {
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    max-width: 600px;
+}
+
+.circular-group {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-bottom: -50px;
+}
+
+.curved-text-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.curved-text-svg text {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 800;
+    fill: var(--primary-color);
+    letter-spacing: 3px;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.6));
+}
+
+.profile-photo {
+    position: absolute;
+    /* Menyelaraskan tepat di tengah kurva SVG (Center X: 250, Center Y: 270) */
+    top: 270px;
+    left: 250px;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid white;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: var(--text-color);
-    line-height: 1.2;
+.name-text {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--name-color);
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    z-index: 2;
+    margin-top: 10px;
+    letter-spacing: 2px;
 }
 
-.message {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #636e72;
-    margin-bottom: 30px;
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-light);
+    animation: bounce 2s infinite;
 }
 
-.decorations {
-    font-size: 2.5rem;
+.scroll-indicator p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+.arrow-icon {
+    width: 35px;
+    height: 35px;
+    filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.8));
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-15px) translateX(-50%); }
+    60% { transform: translateY(-7px) translateX(-50%); }
+}
+
+/* Wave Divider */
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 120px;
+}
+
+.wave-divider .shape-fill {
+    fill: var(--plain-bg);
+}
+
+/* Next Section */
+.next-section {
+    background-color: var(--plain-bg);
+    min-height: 60vh;
+    padding: 80px 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: flex-start;
+    color: var(--text-light);
 }
 
-.decorations span {
-    display: inline-block;
-    animation: float 3s ease-in-out infinite;
+.message-container {
+    max-width: 800px;
+    text-align: center;
 }
 
-.balloon { animation-delay: 0s !important; }
-.cake { animation-delay: 1s !important; }
-.present { animation-delay: 2s !important; }
+.message-container h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+.message-container p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .circular-group {
+        transform: scale(0.7);
+        margin-bottom: -100px;
+    }
+    .name-text {
+        font-size: 2.2rem;
+    }
+    .scroll-indicator {
+        bottom: 50px;
+    }
+    .wave-divider svg {
+        height: 60px;
+    }
 }
