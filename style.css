@@ -26,6 +26,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #000;
+    overflow: hidden;
 }
 
 .hero-bg {
@@ -35,8 +36,9 @@ body {
     background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    /* Filter hitam putih (grayscale) dan sedikit digelapkan agar teks terbaca */
-    filter: grayscale(100%) brightness(0.4);
+    /* Memberikan efek blur dan sedikit digelapkan agar teks terbaca */
+    filter: blur(6px) brightness(0.5);
+    transform: scale(1.05); /* Skala sedikit agar tepian blur tidak terlihat putih */
     z-index: 0;
 }
 
@@ -65,10 +67,10 @@ body {
 
 .curved-text-svg text {
     font-family: 'Cinzel', serif;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 800;
     fill: var(--primary-color);
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.6));
 }
 
@@ -88,19 +90,19 @@ body {
 
 .name-text {
     font-family: 'Cinzel', serif;
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--name-color);
     text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
     z-index: 2;
-    margin-top: 10px;
+    margin-top: 15px;
     letter-spacing: 2px;
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 80px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -134,7 +136,7 @@ body {
 /* Wave Divider */
 .wave-divider {
     position: absolute;
-    bottom: 0;
+    bottom: -1px; /* Menghindari celah 1px */
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -147,6 +149,7 @@ body {
     display: block;
     width: calc(100% + 1.3px);
     height: 120px;
+    transform: rotate(180deg); /* Membalik SVG agar sisi ratanya ada di bawah dan menyambung ke page 2 */
 }
 
 .wave-divider .shape-fill {
@@ -189,7 +192,7 @@ body {
         margin-bottom: -100px;
     }
     .name-text {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     .scroll-indicator {
         bottom: 50px;
