@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #f1c40f; /* Warna gold yang mewah untuk teks melingkar */
-    --name-color: #e74c3c;    /* Warna merah elegan untuk nama */
-    --plain-bg: #2c3e50;      /* Warna solid untuk bagian bawah */
+    --primary-color: #f1c40f;
+    --name-color: #e74c3c;
+    --plain-bg: #2c3e50;
     --text-light: #ffffff;
 }
 
@@ -17,7 +17,6 @@ body {
     background-color: var(--plain-bg);
 }
 
-/* Hero Section */
 .hero {
     position: relative;
     height: 100vh;
@@ -32,13 +31,12 @@ body {
 .hero-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Ganti URL ini dengan foto background yang diinginkan */
+    /* URL Foto untuk background */
     background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    /* Memberikan efek blur dan sedikit digelapkan agar teks terbaca */
     filter: blur(6px) brightness(0.5);
-    transform: scale(1.05); /* Skala sedikit agar tepian blur tidak terlihat putih */
+    transform: scale(1.05);
     z-index: 0;
 }
 
@@ -50,6 +48,7 @@ body {
     align-items: center;
     width: 100%;
     max-width: 600px;
+    margin-top: -80px;
 }
 
 .circular-group {
@@ -67,7 +66,7 @@ body {
 
 .curved-text-svg text {
     font-family: 'Cinzel', serif;
-    font-size: 38px;
+    font-size: 46px;
     font-weight: 800;
     fill: var(--primary-color);
     letter-spacing: 2px;
@@ -76,7 +75,6 @@ body {
 
 .profile-photo {
     position: absolute;
-    /* Menyelaraskan tepat di tengah kurva SVG (Center X: 250, Center Y: 270) */
     top: 270px;
     left: 250px;
     transform: translate(-50%, -50%);
@@ -90,7 +88,7 @@ body {
 
 .name-text {
     font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 800;
     color: var(--name-color);
     text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
@@ -99,10 +97,9 @@ body {
     letter-spacing: 2px;
 }
 
-/* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 120px;
+    bottom: 160px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -111,10 +108,18 @@ body {
     align-items: center;
     color: var(--text-light);
     animation: bounce 2s infinite;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .scroll-indicator p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 5px;
     font-family: 'Playfair Display', serif;
     letter-spacing: 1px;
@@ -122,8 +127,8 @@ body {
 }
 
 .arrow-icon {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.8));
 }
 
@@ -133,10 +138,9 @@ body {
     60% { transform: translateY(-7px) translateX(-50%); }
 }
 
-/* Wave Divider */
 .wave-divider {
     position: absolute;
-    bottom: -1px; /* Menghindari celah 1px */
+    bottom: -1px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -148,22 +152,21 @@ body {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 120px;
-    transform: rotate(180deg); /* Membalik SVG agar sisi ratanya ada di bawah dan menyambung ke page 2 */
+    height: 200px;
+    transform: rotate(180deg);
 }
 
 .wave-divider .shape-fill {
     fill: var(--plain-bg);
 }
 
-/* Next Section */
 .next-section {
     background-color: var(--plain-bg);
-    min-height: 60vh;
+    min-height: 88vh;
     padding: 80px 20px;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     color: var(--text-light);
 }
 
@@ -172,27 +175,163 @@ body {
     text-align: center;
 }
 
-.message-container h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--primary-color);
+.gift-box {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: wiggle 2.5s infinite;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
 }
 
-.message-container p {
-    font-size: 1.3rem;
-    line-height: 1.8;
+.gift-box:hover {
+    transform: scale(1.1);
+}
+
+.gift-hint {
+    margin-top: 15px;
+    font-size: 1.2rem;
     font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    animation: pulse 2s infinite;
 }
 
-/* Responsive adjustments for smaller screens */
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes wiggle {
+    0%, 10% { transform: rotate(0deg); }
+    15% { transform: rotate(-10deg); }
+    20% { transform: rotate(10deg); }
+    25% { transform: rotate(-10deg); }
+    30% { transform: rotate(10deg); }
+    35%, 100% { transform: rotate(0deg); }
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-paper {
+    background-color: #fffdf5;
+    width: 90vw;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
+    max-height: 85vh;
+    padding: 30px;
+    padding-right: 25px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    border: 2px solid #dfc37e;
+    outline: 2px solid #dfc37e;
+    outline-offset: -10px;
+    transform: scale(1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.hidden .card-paper {
+    transform: scale(0.8);
+}
+
+.close-hint {
+    position: absolute;
+    bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    pointer-events: none;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    animation: pulse 2s infinite;
+}
+
+.card-content {
+    margin-top: 10px;
+    color: #4a4a4a;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 15px;
+}
+
+.card-content::-webkit-scrollbar {
+    width: 4px;
+}
+.card-content::-webkit-scrollbar-thumb {
+    background-color: #dfc37e;
+    border-radius: 10px;
+}
+.card-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--name-color);
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 1px dashed #dfc37e;
+    padding-bottom: 15px;
+}
+
+.card-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Form adjustment buat layar mobile */
 @media (max-width: 600px) {
+    .content-wrapper {
+        margin-top: -120px;
+    }
     .circular-group {
         transform: scale(0.7);
         margin-bottom: -100px;
     }
     .name-text {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+    .card-paper {
+        padding: 25px;
+        padding-right: 20px;
+    }
+    .card-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+    .card-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .close-hint {
+        font-size: 0.9rem;
     }
     .scroll-indicator {
         bottom: 50px;
